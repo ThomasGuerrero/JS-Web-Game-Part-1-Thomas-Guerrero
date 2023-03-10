@@ -10,10 +10,31 @@ function newImage (image, left, bottom) {
 
 function newItem (image, left, bottom) {
     let item = newImage(image, left, bottom)
-    item.addEventListener('dblclick', () => {
-        item.remove() 
+    item.addEventListener('click', function() {
+        item.remove()
+        let inventoryItem = document.createElement('img')
+        inventoryItem.src = image
+        inventory.append(inventoryItem)
     })
 }
+let inventory = document.createElement('div')
+
+function newInventory(){
+    inventory.style.position = 'fixed'
+    inventory.style.bottom = '0px';
+    inventory.style.left = '0px'
+    inventory.style.width = '100%'
+    inventory.style.height = '100px'
+    inventory.style.display = 'flex'
+    inventory.style.flexDirection = 'row'
+    inventory.style.alignItems = 'center'
+    inventory.style.justifyContent = 'space-evenly'
+    inventory.style.border = '2px solid black'
+    inventory.style.backgroundColor = 'brown'
+    document.body.append(inventory)
+}
+
+newInventory()
 
 newImage ('assets/green-character.gif', '100', '100')
 newImage ('assets/pine-tree.png', '450', '200')
